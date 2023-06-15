@@ -12,29 +12,11 @@ functions:
       - http:
           path: phones
           method: post
-
-functions:
+          
   getPhone:
     handler: src/phone/getPhone.get
     events:
       - http:
           path: phones
           method: get
-
-functions:
-  updatePhone:
-    handler: src/phone/updatePhone.update
-    events:
-      - http:
-          path: phones
-          method: put
-
-functions:
-  deletePhone:
-    handler: src/phone/deletePhone.delete
-    events:
-      - http:
-          path: phones
-          method: delete
-
           
