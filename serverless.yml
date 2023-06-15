@@ -4,6 +4,12 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs18.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:*
+      Resource:
+        - arn:aws:dynamodb:us-east-1:816694965331:table/PhoneTable
 
 functions:
   createPhone:
@@ -12,11 +18,24 @@ functions:
       - http:
           path: phones
           method: post
-          
+
   getPhone:
     handler: src/phone/getPhone.get
     events:
       - http:
           path: phones
           method: get
-          
+
+resources:
+  Resources:
+    PhoneTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: PhoneTable
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH 
