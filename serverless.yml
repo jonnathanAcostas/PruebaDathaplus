@@ -26,6 +26,20 @@ functions:
           path: phones
           method: get
 
+  updatePhone:
+    handler: src/phone/updatePhone.update
+    events:
+      - http:
+          path: phones
+          method: put
+
+  deletePhone:
+    handler: src/phone/deletePhone.deletePhone
+    events:
+      - http:
+          path: phones
+          method: delete          
+
 resources:
   Resources:
     PhoneTable:
