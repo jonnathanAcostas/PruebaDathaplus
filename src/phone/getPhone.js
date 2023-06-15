@@ -9,7 +9,6 @@ const get = async (event) => {
   const result = await dynamodb.scan({ TableName: "PhoneTable" }).promise();
 
   const tasks = result.Items;
-console.log(tasks);
 
   return {
     status: 200,
